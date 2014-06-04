@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>E3914CBB-073A-489A-BE77-27D4CF8EAB1B</string>
+	<key>IDESourceControlProjectName</key>
+	<string>proximity</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>611B1929-6A31-4714-A6B5-D5F5BF360EAE</key>
+		<string>https://github.com/ricky641b/proximity-iOS.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>proximity.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>611B1929-6A31-4714-A6B5-D5F5BF360EAE</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/ricky641b/proximity-iOS.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>611B1929-6A31-4714-A6B5-D5F5BF360EAE</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>611B1929-6A31-4714-A6B5-D5F5BF360EAE</string>
+			<key>IDESourceControlWCCName</key>
+			<string>proximity-iOS</string>
+		</dict>
+	</array>
+</dict>
+</plist>
