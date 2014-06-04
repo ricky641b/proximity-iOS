@@ -58,7 +58,7 @@
 }
 */
 
-- (IBAction)back:(id)sender {
+- (IBAction)server:(id)sender {
     NSArray *dirPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     docsDir = [dirPath objectAtIndex:0];
     webUploader = [[GCDWebUploader alloc] initWithUploadDirectory:docsDir];
@@ -72,9 +72,9 @@
     
     
 }
--(void)webUploader:(GCDWebUploader *)uploader didDownloadFileAtPath:(NSString *)path
+-(IBAction)back:(id)sender
 {
-    NSLog(@"File Uploaded");
+    [self dismissViewControllerAnimated:YES completion:NULL];
 }
 -(void)webUploader:(GCDWebUploader *)uploader didUploadFileAtPath:(NSString *)path
 {
