@@ -63,7 +63,11 @@
     docsDir = [dirPath objectAtIndex:0];
     webUploader = [[GCDWebUploader alloc] initWithUploadDirectory:docsDir];
     webUploader.delegate = self;
-    [webUploader start];
+    
+    if(![webUploader start])
+    {
+        [webUploader startWithPort:2121 bonjourName:@" "];
+    }
     NSLog(@"Visit %@ in your web browser", webUploader.serverURL);
     
     
