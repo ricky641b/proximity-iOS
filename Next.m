@@ -33,10 +33,12 @@
     UIDevice *device=[UIDevice currentDevice];
     device.proximityMonitoringEnabled=NO;
     imageCollectionView.backgroundColor = [UIColor clearColor];
-    //NSArray *dirPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    //NSString *docsDir = [dirPath objectAtIndex:0];
-    collImages = [[NSMutableArray alloc] init];
-     collImages = [[NSMutableArray alloc] initWithArray:[[NSFileManager defaultManager] contentsOfDirectoryAtPath:docsDir error:nil]];
+    NSArray *dirPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    docsDir = [dirPath objectAtIndex:0];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF ENDSWITH '.png'"];
+    //collImages = [[NSMutableArray alloc] init];
+    NSArray *otherImages = [[NSMutableArray alloc] initWithArray:[[NSFileManager defaultManager] contentsOfDirectoryAtPath:docsDir error:nil]];
+    collImages = [[NSMutableArray alloc] initWithArray:[otherImages filteredArrayUsingPredicate:predicate]];
     //NSLog(@"%@",[collImages description]);
     // Do any additional setup after loading the view.
 }
@@ -72,6 +74,17 @@
     
     
 }
+- (UIImage*)loadImage:(NSInteger)counter
+{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
+                                                         NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString* path = [documentsDirectory stringByAppendingPathComponent:
+                      [collImages objectAtIndex:counter] ];
+    UIImage* myImage = [UIImage imageWithContentsOfFile:path];
+    return myImage;
+}
+
 -(IBAction)back:(id)sender
 {
     [self dismissViewControllerAnimated:YES completion:NULL];
@@ -88,7 +101,7 @@
 {
     UICollectionViewCell *collCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
     UIImageView *imageA = (UIImageView *)[collCell viewWithTag:10];
-    [imageA setImage:[collImages objectAtIndex:indexPath.row]];
+    [imageA setImage:[self loadImage:indexPath.row]];
     return collCell;
 }
 - (IBAction)import:(id)sender {
@@ -105,16 +118,16 @@
     docsDir = [dirPath objectAtIndex:0];
     
     [self dismissViewControllerAnimated:YES completion:NULL];
-    int a = 0;
+    int a = [collImages count] + 0;
    for(NSDictionary *myInfo in info)
    {
-       //NSString *url = [myInfo objectForKey:UIImagePickerControllerReferenceURL];
-       //url = [url lastPathComponent];
+       NSString *url = [myInfo objectForKey:UIImagePickerControllerReferenceURL];
+       url = [url lastPathComponent];
        image = [myInfo objectForKey:UIImagePickerControllerOriginalImage];
-       //NSString *myPath = [docsDir stringByAppendingFormat:@"/%d.png",a];
-       //NSData *data = UIImagePNGRepresentation(image);
-       //[data writeToFile:myPath atomically:NO];
-       [collImages addObject:image];
+       NSString *myPath = [docsDir stringByAppendingFormat:@"/%d.png",a];
+       NSData *data = UIImagePNGRepresentation(image);
+       [data writeToFile:myPath atomically:NO];
+       [collImages addObject:myPath];
        a++;
    }
     [imageCollectionView performSelector:@selector(reloadData)];
