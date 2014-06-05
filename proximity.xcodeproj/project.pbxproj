@@ -56,6 +56,7 @@
 		544FF89B193F5CD100D5781E /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 544FF89A193F5CD100D5781E /* libxml2.dylib */; };
 		544FF89D193F5CDA00D5781E /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 544FF89C193F5CDA00D5781E /* libz.dylib */; };
 		5465D51F193DDC6F005D589A /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5465D51E193DDC6F005D589A /* AssetsLibrary.framework */; };
+		54C829B019410BEF007BCD8D /* ServerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C829AF19410BEF007BCD8D /* ServerViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -147,6 +148,8 @@
 		544FF89A193F5CD100D5781E /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		544FF89C193F5CDA00D5781E /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		5465D51E193DDC6F005D589A /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		54C829AE19410BEF007BCD8D /* ServerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerViewController.h; sourceTree = "<group>"; };
+		54C829AF19410BEF007BCD8D /* ServerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -225,6 +228,8 @@
 				246F8274193C0070004BC311 /* ViewController.m */,
 				244480D3193C384600D50AAF /* Next.h */,
 				244480D4193C384600D50AAF /* Next.m */,
+				54C829AE19410BEF007BCD8D /* ServerViewController.h */,
+				54C829AF19410BEF007BCD8D /* ServerViewController.m */,
 				246F8276193C0070004BC311 /* Images.xcassets */,
 				2490B76B193F9B0000322803 /* Instagram_Logo.png */,
 				2490B767193F9A5000322803 /* imgres.jpg */,
@@ -496,6 +501,7 @@
 				244480D5193C384600D50AAF /* Next.m in Sources */,
 				544FF890193F5C9A00D5781E /* GCDWebServerDataResponse.m in Sources */,
 				246F8275193C0070004BC311 /* ViewController.m in Sources */,
+				54C829B019410BEF007BCD8D /* ServerViewController.m in Sources */,
 				544FF88A193F5C9A00D5781E /* GCDWebServerRequest.m in Sources */,
 				246F826F193C0070004BC311 /* AppDelegate.m in Sources */,
 				544FF895193F5C9A00D5781E /* GCDWebUploader.m in Sources */,
