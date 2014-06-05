@@ -118,13 +118,14 @@
     docsDir = [dirPath objectAtIndex:0];
     
     [self dismissViewControllerAnimated:YES completion:NULL];
-    int a = [collImages count] + 0;
+    NSInteger a = [collImages count] + 0;
+    NSLog(@"%ld",a);
    for(NSDictionary *myInfo in info)
    {
        NSString *url = [myInfo objectForKey:UIImagePickerControllerReferenceURL];
        url = [url lastPathComponent];
        image = [myInfo objectForKey:UIImagePickerControllerOriginalImage];
-       NSString *myPath = [docsDir stringByAppendingFormat:@"/%d.png",a];
+       NSString *myPath = [docsDir stringByAppendingFormat:@"/%ld.png",(long)a];
        NSData *data = UIImagePNGRepresentation(image);
        [data writeToFile:myPath atomically:NO];
        [collImages addObject:myPath];
