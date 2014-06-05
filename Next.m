@@ -102,8 +102,6 @@
     NSInteger imgNo = [collImages count] + 0;
    for(NSDictionary *myInfo in info)
    {
-       NSString *bla = UIImagePickerControllerMediaMetadata;
-       NSLog(@"%@",bla);
        image = [myInfo objectForKey:UIImagePickerControllerOriginalImage];
        NSString *myPath = [docsDir stringByAppendingFormat:@"/%ld.png",(long)imgNo];
        NSData *data = UIImagePNGRepresentation(image);
@@ -120,7 +118,6 @@
 {
     [picker dismissViewControllerAnimated:YES completion:NULL];
 }
-
 
 
 @end
