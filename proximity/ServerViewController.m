@@ -33,18 +33,20 @@ static int fileCounter = 0;
     
     if(![webUploader start])
     {
-        [webUploader startWithPort:2121 bonjourName:@" "];
+        [webUploader startWithPort:2121 bonjourName:@""];
     }
     urlLabel.text = [[NSString alloc] initWithFormat:@"%@", webUploader.serverURL];
     
 }
 -(void)webUploader:(GCDWebUploader *)uploader didUploadFileAtPath:(NSString *)path
 {
+    fileCounter++;
     downloadFileNo.text = [[NSString alloc] initWithFormat:@"%d files downloaded",fileCounter];
 }
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self webServerInit];
     // Do any additional setup after loading the view.
 }
 -(IBAction)stopServer:(id)sender

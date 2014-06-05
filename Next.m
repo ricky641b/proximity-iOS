@@ -50,7 +50,7 @@
 
 
 - (IBAction)server:(id)sender {
-    NSArray *dirPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+  /*  NSArray *dirPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     docsDir = [dirPath objectAtIndex:0];
     webUploader = [[GCDWebUploader alloc] initWithUploadDirectory:docsDir];
     webUploader.delegate = self;
@@ -60,7 +60,7 @@
         [webUploader startWithPort:2121 bonjourName:@" "];
     }
     NSLog(@"Visit %@ in your web browser", webUploader.serverURL);
-    
+   */
     
 }
 - (UIImage*)loadImage:(NSInteger)counter
