@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6154.17" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="TeO-bO-xcm">
     <dependencies>
-<<<<<<< HEAD
         <deployment defaultVersion="1792" identifier="iOS"/>
-=======
-        <deployment defaultVersion="1808" identifier="iOS"/>
->>>>>>> my-Copy
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6153.11"/>
     </dependencies>
     <scenes>
@@ -131,7 +127,6 @@
                                 </state>
                                 <connections>
                                     <action selector="server:" destination="TeO-bO-xcm" eventType="touchUpInside" id="D3O-v6-oVO"/>
-                                    <segue destination="aSv-EH-Yva" kind="modal" id="2A8-23-zgA"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y8M-xn-sZZ">
@@ -154,58 +149,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c7P-NA-zVw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="456" y="58"/>
-        </scene>
-        <!--Server View Controller-->
-        <scene sceneID="kfT-6h-T74">
-            <objects>
-                <viewController id="aSv-EH-Yva" customClass="ServerViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="xPI-uC-llE"/>
-                        <viewControllerLayoutGuide type="bottom" id="Wyi-Ri-W55"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="xhQ-fy-9yx">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="URL" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5OZ-Wt-kq4">
-                                <rect key="frame" x="34" y="98" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IoT-CF-y7Z">
-                                <rect key="frame" x="84" y="98" width="216" height="21"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                <color key="textColor" red="0.13725490870000001" green="0.76862752440000004" blue="0.078431375319999996" alpha="1" colorSpace="deviceRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Auy-da-zYd">
-                                <rect key="frame" x="119" y="241" width="82" height="30"/>
-                                <state key="normal" title="Stop Server">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="stopServer:" destination="aSv-EH-Yva" eventType="touchUpInside" id="qwL-m7-ibS"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mDE-6f-NOy">
-                                <rect key="frame" x="63" y="182" width="182" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="1" green="0.91867989260000005" blue="0.1999541547" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="3Ye-MN-thp"/>
-                    <connections>
-                        <outlet property="fileDownloadLabel" destination="mDE-6f-NOy" id="hyS-6t-cNt"/>
-                        <outlet property="urlLabel" destination="IoT-CF-y7Z" id="i4I-uv-h93"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Rl0-4m-LcF" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="844" y="9"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="qzx-w6-xrT">
