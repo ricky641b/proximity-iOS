@@ -26,7 +26,6 @@
 		2490B76A193F9A5000322803 /* Facebook_f_logo_2013.png in Resources */ = {isa = PBXBuildFile; fileRef = 2490B768193F9A5000322803 /* Facebook_f_logo_2013.png */; };
 		2490B76C193F9B0000322803 /* Instagram_Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 2490B76B193F9B0000322803 /* Instagram_Logo.png */; };
 		24E9EEDE1940662500A8F8C6 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24E9EEDD1940662500A8F8C6 /* Social.framework */; };
-		5405BE9B1940FB1E004EB6E7 /* ServerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5405BE9A1940FB1E004EB6E7 /* ServerViewController.m */; };
 		544FF857193F5C2500D5781E /* ELCAlbumPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 544FF842193F5C2500D5781E /* ELCAlbumPickerController.m */; };
 		544FF858193F5C2500D5781E /* ELCAsset.m in Sources */ = {isa = PBXBuildFile; fileRef = 544FF844193F5C2500D5781E /* ELCAsset.m */; };
 		544FF859193F5C2500D5781E /* ELCAssetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 544FF846193F5C2500D5781E /* ELCAssetCell.m */; };
@@ -95,8 +94,6 @@
 		2490B768193F9A5000322803 /* Facebook_f_logo_2013.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Facebook_f_logo_2013.png; sourceTree = "<group>"; };
 		2490B76B193F9B0000322803 /* Instagram_Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Instagram_Logo.png; sourceTree = "<group>"; };
 		24E9EEDD1940662500A8F8C6 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
-		5405BE991940FB1E004EB6E7 /* ServerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerViewController.h; sourceTree = "<group>"; };
-		5405BE9A1940FB1E004EB6E7 /* ServerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerViewController.m; sourceTree = "<group>"; };
 		544FF841193F5C2500D5781E /* ELCAlbumPickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELCAlbumPickerController.h; sourceTree = "<group>"; };
 		544FF842193F5C2500D5781E /* ELCAlbumPickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELCAlbumPickerController.m; sourceTree = "<group>"; };
 		544FF843193F5C2500D5781E /* ELCAsset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELCAsset.h; sourceTree = "<group>"; };
@@ -228,8 +225,6 @@
 				246F8274193C0070004BC311 /* ViewController.m */,
 				244480D3193C384600D50AAF /* Next.h */,
 				244480D4193C384600D50AAF /* Next.m */,
-				5405BE991940FB1E004EB6E7 /* ServerViewController.h */,
-				5405BE9A1940FB1E004EB6E7 /* ServerViewController.m */,
 				246F8276193C0070004BC311 /* Images.xcassets */,
 				2490B76B193F9B0000322803 /* Instagram_Logo.png */,
 				2490B767193F9A5000322803 /* imgres.jpg */,
@@ -501,7 +496,6 @@
 				244480D5193C384600D50AAF /* Next.m in Sources */,
 				544FF890193F5C9A00D5781E /* GCDWebServerDataResponse.m in Sources */,
 				246F8275193C0070004BC311 /* ViewController.m in Sources */,
-				5405BE9B1940FB1E004EB6E7 /* ServerViewController.m in Sources */,
 				544FF88A193F5C9A00D5781E /* GCDWebServerRequest.m in Sources */,
 				246F826F193C0070004BC311 /* AppDelegate.m in Sources */,
 				544FF895193F5C9A00D5781E /* GCDWebUploader.m in Sources */,
@@ -632,7 +626,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "proximity/proximity-Prefix.pch";
 				INFOPLIST_FILE = "proximity/proximity-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "B93015F3-9D7E-436A-8702-0E7D288E2056";
 				SDKROOT = iphoneos7.1;
@@ -650,7 +644,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "proximity/proximity-Prefix.pch";
 				INFOPLIST_FILE = "proximity/proximity-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "B93015F3-9D7E-436A-8702-0E7D288E2056";
 				SDKROOT = iphoneos7.1;
