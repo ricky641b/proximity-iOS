@@ -14,7 +14,6 @@
 		246F8269193C0070004BC311 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 246F8267193C0070004BC311 /* InfoPlist.strings */; };
 		246F826B193C0070004BC311 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 246F826A193C0070004BC311 /* main.m */; };
 		246F826F193C0070004BC311 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 246F826E193C0070004BC311 /* AppDelegate.m */; };
-		246F8272193C0070004BC311 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 246F8270193C0070004BC311 /* Main.storyboard */; };
 		246F8275193C0070004BC311 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 246F8274193C0070004BC311 /* ViewController.m */; };
 		246F8277193C0070004BC311 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 246F8276193C0070004BC311 /* Images.xcassets */; };
 		246F827E193C0070004BC311 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 246F827D193C0070004BC311 /* XCTest.framework */; };
@@ -22,6 +21,11 @@
 		246F8280193C0070004BC311 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 246F8262193C0070004BC311 /* UIKit.framework */; };
 		246F8288193C0070004BC311 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 246F8286193C0070004BC311 /* InfoPlist.strings */; };
 		246F828A193C0070004BC311 /* proximityTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 246F8289193C0070004BC311 /* proximityTests.m */; };
+		2490B766193F980000322803 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2490B765193F980000322803 /* Main.storyboard */; };
+		2490B769193F9A5000322803 /* imgres.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2490B767193F9A5000322803 /* imgres.jpg */; };
+		2490B76A193F9A5000322803 /* Facebook_f_logo_2013.png in Resources */ = {isa = PBXBuildFile; fileRef = 2490B768193F9A5000322803 /* Facebook_f_logo_2013.png */; };
+		2490B76C193F9B0000322803 /* Instagram_Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 2490B76B193F9B0000322803 /* Instagram_Logo.png */; };
+		24E9EEDE1940662500A8F8C6 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24E9EEDD1940662500A8F8C6 /* Social.framework */; };
 		544FF857193F5C2500D5781E /* ELCAlbumPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 544FF842193F5C2500D5781E /* ELCAlbumPickerController.m */; };
 		544FF858193F5C2500D5781E /* ELCAsset.m in Sources */ = {isa = PBXBuildFile; fileRef = 544FF844193F5C2500D5781E /* ELCAsset.m */; };
 		544FF859193F5C2500D5781E /* ELCAssetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 544FF846193F5C2500D5781E /* ELCAssetCell.m */; };
@@ -77,7 +81,6 @@
 		246F826C193C0070004BC311 /* proximity-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "proximity-Prefix.pch"; sourceTree = "<group>"; };
 		246F826D193C0070004BC311 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		246F826E193C0070004BC311 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		246F8271193C0070004BC311 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		246F8273193C0070004BC311 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		246F8274193C0070004BC311 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		246F8276193C0070004BC311 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -86,6 +89,11 @@
 		246F8285193C0070004BC311 /* proximityTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "proximityTests-Info.plist"; sourceTree = "<group>"; };
 		246F8287193C0070004BC311 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		246F8289193C0070004BC311 /* proximityTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = proximityTests.m; sourceTree = "<group>"; };
+		2490B765193F980000322803 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		2490B767193F9A5000322803 /* imgres.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = imgres.jpg; sourceTree = "<group>"; };
+		2490B768193F9A5000322803 /* Facebook_f_logo_2013.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Facebook_f_logo_2013.png; sourceTree = "<group>"; };
+		2490B76B193F9B0000322803 /* Instagram_Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Instagram_Logo.png; sourceTree = "<group>"; };
+		24E9EEDD1940662500A8F8C6 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		544FF841193F5C2500D5781E /* ELCAlbumPickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELCAlbumPickerController.h; sourceTree = "<group>"; };
 		544FF842193F5C2500D5781E /* ELCAlbumPickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELCAlbumPickerController.m; sourceTree = "<group>"; };
 		544FF843193F5C2500D5781E /* ELCAsset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELCAsset.h; sourceTree = "<group>"; };
@@ -146,6 +154,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24E9EEDE1940662500A8F8C6 /* Social.framework in Frameworks */,
 				544FF89D193F5CDA00D5781E /* libz.dylib in Frameworks */,
 				544FF89B193F5CD100D5781E /* libxml2.dylib in Frameworks */,
 				544FF899193F5CCC00D5781E /* CFNetwork.framework in Frameworks */,
@@ -192,6 +201,7 @@
 		246F825D193C0070004BC311 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				24E9EEDD1940662500A8F8C6 /* Social.framework */,
 				544FF89C193F5CDA00D5781E /* libz.dylib */,
 				544FF89A193F5CD100D5781E /* libxml2.dylib */,
 				544FF898193F5CCC00D5781E /* CFNetwork.framework */,
@@ -210,12 +220,15 @@
 			children = (
 				246F826D193C0070004BC311 /* AppDelegate.h */,
 				246F826E193C0070004BC311 /* AppDelegate.m */,
-				246F8270193C0070004BC311 /* Main.storyboard */,
+				2490B765193F980000322803 /* Main.storyboard */,
 				246F8273193C0070004BC311 /* ViewController.h */,
 				246F8274193C0070004BC311 /* ViewController.m */,
 				244480D3193C384600D50AAF /* Next.h */,
 				244480D4193C384600D50AAF /* Next.m */,
 				246F8276193C0070004BC311 /* Images.xcassets */,
+				2490B76B193F9B0000322803 /* Instagram_Logo.png */,
+				2490B767193F9A5000322803 /* imgres.jpg */,
+				2490B768193F9A5000322803 /* Facebook_f_logo_2013.png */,
 				246F8265193C0070004BC311 /* Supporting Files */,
 			);
 			path = proximity;
@@ -444,9 +457,12 @@
 				544FF85F193F5C2500D5781E /* Overlay.png in Resources */,
 				246F8277193C0070004BC311 /* Images.xcassets in Resources */,
 				246F8269193C0070004BC311 /* InfoPlist.strings in Resources */,
+				2490B769193F9A5000322803 /* imgres.jpg in Resources */,
+				2490B76A193F9A5000322803 /* Facebook_f_logo_2013.png in Resources */,
+				2490B766193F980000322803 /* Main.storyboard in Resources */,
 				544FF860193F5C2500D5781E /* Overlay@2x.png in Resources */,
-				246F8272193C0070004BC311 /* Main.storyboard in Resources */,
 				544FF85D193F5C2500D5781E /* ELCAssetPicker.xib in Resources */,
+				2490B76C193F9B0000322803 /* Instagram_Logo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -516,14 +532,6 @@
 				246F8268193C0070004BC311 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		246F8270193C0070004BC311 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				246F8271193C0070004BC311 /* Base */,
-			);
-			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 		246F8286193C0070004BC311 /* InfoPlist.strings */ = {

@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import <Social/Social.h>
 @interface ViewController : UIViewController<UIAlertViewDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 {
     UIImagePickerController *imagePicker;
@@ -15,8 +15,10 @@
     IBOutlet UIImageView *imageView;
 
 }
-@property (strong, nonatomic) IBOutlet UILabel *state;
-@property (strong, nonatomic) IBOutlet UILabel *Text;
-- (IBAction)activate:(id)sender;
+- (IBAction)camera:(id)sender;
+- (IBAction)facebok:(id)sender;
+- (IBAction)twitter:(id)sender;
+@property(strong,nonatomic)SLComposeViewController *slComposeView;
+@property(strong,nonatomic) NSData *imageToShare;
 
 @end
