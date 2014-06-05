@@ -36,11 +36,10 @@
     NSArray *dirPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     docsDir = [dirPath objectAtIndex:0];
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF ENDSWITH '.png'"];
-    //collImages = [[NSMutableArray alloc] init];
     NSArray *otherImages = [[NSMutableArray alloc] initWithArray:[[NSFileManager defaultManager] contentsOfDirectoryAtPath:docsDir error:nil]];
+    [otherImages description];
     collImages = [[NSMutableArray alloc] initWithArray:[otherImages filteredArrayUsingPredicate:predicate]];
-    //NSLog(@"%@",[collImages description]);
-    // Do any additional setup after loading the view.
+   
 }
 
 - (void)didReceiveMemoryWarning
@@ -49,16 +48,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 - (IBAction)server:(id)sender {
     NSArray *dirPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
@@ -76,11 +65,7 @@
 }
 - (UIImage*)loadImage:(NSInteger)counter
 {
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
-                                                         NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString* path = [documentsDirectory stringByAppendingPathComponent:
-                      [collImages objectAtIndex:counter] ];
+    NSString* path = [docsDir stringByAppendingPathComponent:[collImages objectAtIndex:counter]];
     UIImage* myImage = [UIImage imageWithContentsOfFile:path];
     return myImage;
 }
@@ -114,24 +99,21 @@
 }
 -(void)elcImagePickerController:(ELCImagePickerController *)picker didFinishPickingMediaWithInfo:(NSArray *)info
 {
-    NSArray *dirPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    docsDir = [dirPath objectAtIndex:0];
-    
-    [self dismissViewControllerAnimated:YES completion:NULL];
-    NSInteger a = [collImages count] + 0;
-    NSLog(@"%ld",a);
+    NSInteger imgNo = [collImages count] + 0;
    for(NSDictionary *myInfo in info)
    {
-       NSString *url = [myInfo objectForKey:UIImagePickerControllerReferenceURL];
-       url = [url lastPathComponent];
+       NSString *bla = UIImagePickerControllerMediaMetadata;
+       NSLog(@"%@",bla);
        image = [myInfo objectForKey:UIImagePickerControllerOriginalImage];
-       NSString *myPath = [docsDir stringByAppendingFormat:@"/%ld.png",(long)a];
+       NSString *myPath = [docsDir stringByAppendingFormat:@"/%ld.png",(long)imgNo];
        NSData *data = UIImagePNGRepresentation(image);
        [data writeToFile:myPath atomically:NO];
+        myPath = [myPath lastPathComponent];
        [collImages addObject:myPath];
-       a++;
+       imgNo++;
    }
     [imageCollectionView performSelector:@selector(reloadData)];
+     [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
 -(void)elcImagePickerControllerDidCancel:(ELCImagePickerController *)picker
