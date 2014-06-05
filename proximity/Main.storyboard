@@ -21,7 +21,7 @@
                                 <rect key="frame" x="-4" y="64" width="328" height="438"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M4l-QN-hQb">
-                                <rect key="frame" x="20" y="514" width="33" height="34"/>
+                                <rect key="frame" x="20" y="517" width="29" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" backgroundImage="Facebook_f_logo_2013.png"/>
                                 <connections>
@@ -29,7 +29,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1db-NL-HTj">
-                                <rect key="frame" x="257" y="512" width="43" height="38"/>
+                                <rect key="frame" x="261" y="512" width="39" height="38"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" backgroundImage="imgres.jpg">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -50,6 +50,11 @@
                     </view>
                     <navigationItem key="navigationItem" id="GNr-5L-Pnb">
                         <nil key="title"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="camera" id="OxM-ZN-uZS">
+                            <connections>
+                                <action selector="camera:" destination="vXZ-lx-hvc" id="HW0-4X-YBg"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="imageView" destination="LiV-06-EAV" id="OBt-z3-nyU"/>
@@ -58,7 +63,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="243" y="108"/>
+            <point key="canvasLocation" x="67" y="58"/>
         </scene>
         <!--Next-->
         <scene sceneID="hNz-xU-qBg">
@@ -147,7 +152,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c7P-NA-zVw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="758" y="92"/>
+            <point key="canvasLocation" x="456" y="58"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="qzx-w6-xrT">
@@ -165,13 +170,14 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UDu-7P-ajv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-189" y="92"/>
+            <point key="canvasLocation" x="-309" y="64"/>
         </scene>
     </scenes>
     <resources>
         <image name="Facebook_f_logo_2013.png" width="417" height="417"/>
         <image name="imgres.jpg" width="204" height="204"/>
     </resources>
+    <color key="tintColor" name="selectedTextBackgroundColor" catalog="System" colorSpace="catalog"/>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

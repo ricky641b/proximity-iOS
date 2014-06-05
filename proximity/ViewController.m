@@ -13,6 +13,7 @@
 @end
 
 @implementation ViewController
+@synthesize imageToShare;
 
 - (void)viewDidLoad
 {
@@ -21,7 +22,7 @@
     device.proximityMonitoringEnabled=YES;
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(proximityChanged:) name:@"UIDeviceProximityStateDidChangeNotification" object:device];
     imagePicker=[[UIImagePickerController alloc]init];
-    imagePicker=[[UIImagePickerController alloc]init];
+   // imagePicker=[[UIImagePickerController alloc]init];
     imagePicker.delegate=self;
     imagePicker.sourceType=UIImagePickerControllerSourceTypeCamera;
     // [imagePicker setSourceType:UIImagePickerControllerSourceTypeCamera];
@@ -83,13 +84,36 @@
 -(void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     image=[info objectForKey:UIImagePickerControllerOriginalImage];
+    imageToShare=UIImageJPEGRepresentation(image, 1.0);
     [imageView setImage:image];
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
+- (IBAction)camera:(id)sender {
+    imagePicker.delegate=self;
+    imagePicker.sourceType=UIImagePickerControllerSourceTypeCamera;
+    [self presentViewController:imagePicker animated:YES completion:NULL];
+}
+
 - (IBAction)facebok:(id)sender {
+    if([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook])
+    {
+        self.slComposeView=[SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
+        [self.slComposeView addImage:[UIImage imageWithData:imageToShare]];
+        //imageToShare=UIImageJPEGRepresentation(image, 1.0);
+        [self presentViewController:self.slComposeView animated:YES completion:NULL];
+    }
+    else{
+        NSLog(@"Error no account found");
+    }
 }
 
 - (IBAction)twitter:(id)sender {
+    if([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter])
+    {
+        self.slComposeView=[SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
+        [self.slComposeView addImage:[UIImage imageWithData:imageToShare]];
+        [self presentViewController:self.slComposeView animated:YES completion:NULL];
+    }
 }
 @end

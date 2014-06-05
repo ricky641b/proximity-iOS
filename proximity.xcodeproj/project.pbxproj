@@ -25,6 +25,7 @@
 		2490B769193F9A5000322803 /* imgres.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2490B767193F9A5000322803 /* imgres.jpg */; };
 		2490B76A193F9A5000322803 /* Facebook_f_logo_2013.png in Resources */ = {isa = PBXBuildFile; fileRef = 2490B768193F9A5000322803 /* Facebook_f_logo_2013.png */; };
 		2490B76C193F9B0000322803 /* Instagram_Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 2490B76B193F9B0000322803 /* Instagram_Logo.png */; };
+		24E9EEDE1940662500A8F8C6 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24E9EEDD1940662500A8F8C6 /* Social.framework */; };
 		544FF857193F5C2500D5781E /* ELCAlbumPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 544FF842193F5C2500D5781E /* ELCAlbumPickerController.m */; };
 		544FF858193F5C2500D5781E /* ELCAsset.m in Sources */ = {isa = PBXBuildFile; fileRef = 544FF844193F5C2500D5781E /* ELCAsset.m */; };
 		544FF859193F5C2500D5781E /* ELCAssetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 544FF846193F5C2500D5781E /* ELCAssetCell.m */; };
@@ -92,6 +93,7 @@
 		2490B767193F9A5000322803 /* imgres.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = imgres.jpg; sourceTree = "<group>"; };
 		2490B768193F9A5000322803 /* Facebook_f_logo_2013.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Facebook_f_logo_2013.png; sourceTree = "<group>"; };
 		2490B76B193F9B0000322803 /* Instagram_Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Instagram_Logo.png; sourceTree = "<group>"; };
+		24E9EEDD1940662500A8F8C6 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		544FF841193F5C2500D5781E /* ELCAlbumPickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELCAlbumPickerController.h; sourceTree = "<group>"; };
 		544FF842193F5C2500D5781E /* ELCAlbumPickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELCAlbumPickerController.m; sourceTree = "<group>"; };
 		544FF843193F5C2500D5781E /* ELCAsset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELCAsset.h; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24E9EEDE1940662500A8F8C6 /* Social.framework in Frameworks */,
 				544FF89D193F5CDA00D5781E /* libz.dylib in Frameworks */,
 				544FF89B193F5CD100D5781E /* libxml2.dylib in Frameworks */,
 				544FF899193F5CCC00D5781E /* CFNetwork.framework in Frameworks */,
@@ -198,6 +201,7 @@
 		246F825D193C0070004BC311 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				24E9EEDD1940662500A8F8C6 /* Social.framework */,
 				544FF89C193F5CDA00D5781E /* libz.dylib */,
 				544FF89A193F5CD100D5781E /* libxml2.dylib */,
 				544FF898193F5CCC00D5781E /* CFNetwork.framework */,
