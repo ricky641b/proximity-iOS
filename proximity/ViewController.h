@@ -15,8 +15,8 @@
     IBOutlet UIImageView *imageView;
 
 }
-@property (strong, nonatomic) IBOutlet UILabel *state;
-@property (strong, nonatomic) IBOutlet UILabel *Text;
-- (IBAction)activate:(id)sender;
+- (IBAction)facebok:(id)sender;
+- (IBAction)twitter:(id)sender;
+
 
 @end

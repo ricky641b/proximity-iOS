@@ -21,6 +21,11 @@
     device.proximityMonitoringEnabled=YES;
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(proximityChanged:) name:@"UIDeviceProximityStateDidChangeNotification" object:device];
     imagePicker=[[UIImagePickerController alloc]init];
+    imagePicker=[[UIImagePickerController alloc]init];
+    imagePicker.delegate=self;
+    imagePicker.sourceType=UIImagePickerControllerSourceTypeCamera;
+    // [imagePicker setSourceType:UIImagePickerControllerSourceTypeCamera];
+    [self presentViewController:imagePicker animated:YES completion:NULL];
    
 
 	// Do any additional setup after loading the view, typically from a nib.
@@ -36,7 +41,7 @@
     UIDevice *device=[notification object];
     if(device.proximityState==1)
     {
-        _state.text=@"Value is 1";
+       
         
         UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"Login" message:nil delegate:self cancelButtonTitle:@"cancel" otherButtonTitles:@"Login",nil];
         alert.alertViewStyle=UIAlertViewStyleSecureTextInput;
@@ -46,7 +51,7 @@
     }
     else
     {
-        _state.text=@"Value is !1";
+        
         
 
     }
@@ -58,11 +63,11 @@
         UITextField *password=[alertView textFieldAtIndex:0];
         if([password.text isEqualToString:@"nik"])
         {
-            _Text.text=@"Welcome";
+            
             [self performSegueWithIdentifier:@"next" sender:self];
         }
         else{
-            _Text.text=@"Wrong";
+            
         }
     }
 }
@@ -70,13 +75,7 @@
 
 #pragma Camera
 
-- (IBAction)activate:(id)sender {
-    imagePicker=[[UIImagePickerController alloc]init];
-    imagePicker.delegate=self;
-    imagePicker.sourceType=UIImagePickerControllerSourceTypeCamera;
-   // [imagePicker setSourceType:UIImagePickerControllerSourceTypeCamera];
-    [self presentViewController:imagePicker animated:YES completion:NULL];
-}
+
 -(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
     [self dismissViewControllerAnimated:YES completion:NULL];
@@ -88,4 +87,9 @@
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
+- (IBAction)facebok:(id)sender {
+}
+
+- (IBAction)twitter:(id)sender {
+}
 @end
