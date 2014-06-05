@@ -33,15 +33,18 @@
     UIDevice *device=[UIDevice currentDevice];
     device.proximityMonitoringEnabled=NO;
     imageCollectionView.backgroundColor = [UIColor clearColor];
+  
+   
+}
+-(void)webUploaderServerInit
+{
     NSArray *dirPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     docsDir = [dirPath objectAtIndex:0];
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF ENDSWITH '.png'"];
     NSArray *otherImages = [[NSMutableArray alloc] initWithArray:[[NSFileManager defaultManager] contentsOfDirectoryAtPath:docsDir error:nil]];
     [otherImages description];
     collImages = [[NSMutableArray alloc] initWithArray:[otherImages filteredArrayUsingPredicate:predicate]];
-   
 }
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -50,7 +53,7 @@
 
 
 - (IBAction)server:(id)sender {
-    NSArray *dirPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+   /* NSArray *dirPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     docsDir = [dirPath objectAtIndex:0];
     webUploader = [[GCDWebUploader alloc] initWithUploadDirectory:docsDir];
     webUploader.delegate = self;
@@ -60,7 +63,7 @@
         [webUploader startWithPort:2121 bonjourName:@" "];
     }
     NSLog(@"Visit %@ in your web browser", webUploader.serverURL);
-    
+    */
     
 }
 - (UIImage*)loadImage:(NSInteger)counter
@@ -113,7 +116,11 @@
     [imageCollectionView performSelector:@selector(reloadData)];
      [self dismissViewControllerAnimated:YES completion:NULL];
 }
-
+-(void)viewWillAppear:(BOOL)animated
+{
+    [self webUploaderServerInit];
+    [imageCollectionView performSelector:@selector(reloadData)];
+}
 -(void)elcImagePickerControllerDidCancel:(ELCImagePickerController *)picker
 {
     [picker dismissViewControllerAnimated:YES completion:NULL];
