@@ -127,7 +127,7 @@
                                 </state>
                                 <connections>
                                     <action selector="server:" destination="TeO-bO-xcm" eventType="touchUpInside" id="D3O-v6-oVO"/>
-                                    <segue destination="rHE-hY-dQ7" kind="modal" id="LjH-VS-Jr5"/>
+                                    <segue destination="rHE-hY-dQ7" kind="modal" id="J5l-Yj-0f0"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y8M-xn-sZZ">
@@ -187,15 +187,15 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="stopServer:" destination="rHE-hY-dQ7" eventType="touchUpInside" id="1rv-85-AMv"/>
+                                    <action selector="stopServer:" destination="rHE-hY-dQ7" eventType="touchUpInside" id="L2V-JA-4j9"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="downloadedFileNo" destination="1PH-hY-Hh1" id="3IN-0y-KzD"/>
-                        <outlet property="urlLabel" destination="VcI-lo-piR" id="70K-3D-Tfs"/>
+                        <outlet property="downloadFileNo" destination="1PH-hY-Hh1" id="RlU-dq-BCL"/>
+                        <outlet property="urlLabel" destination="VcI-lo-piR" id="Y6n-az-Ghy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6j4-Ur-LbG" userLabel="First Responder" sceneMemberID="firstResponder"/>
