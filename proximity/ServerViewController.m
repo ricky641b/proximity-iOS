@@ -49,6 +49,10 @@ static int fileCounter = 0;
     [self webServerInit];
     // Do any additional setup after loading the view.
 }
+-(void)viewWillAppear:(BOOL)animated
+{
+    
+}
 -(IBAction)stopServer:(id)sender
 {
     [webUploader stop];

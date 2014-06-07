@@ -11,14 +11,13 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "GCDWebUploader.h"
 
-@interface Next : UIViewController<ELCImagePickerControllerDelegate,UINavigationControllerDelegate,UICollectionViewDataSource,UICollectionViewDelegate,GCDWebUploaderDelegate>
+@interface Next : UIViewController<ELCImagePickerControllerDelegate,UINavigationControllerDelegate,UITableViewDataSource,UITableViewDelegate>
 {
     UIImagePickerController *imagePicker;
     UIImage *image;
-    IBOutlet UICollectionView *imageCollectionView;
-    GCDWebUploader *webUploader;
+    IBOutlet UITableView *imageCollectionView;
 }
-@property(nonatomic,strong) GCDWebUploader *webUploader;
+
 - (IBAction)back:(id)sender;
 - (IBAction)import:(id)sender;
 

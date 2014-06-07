@@ -19,8 +19,8 @@
 {
     [super viewDidLoad];
     UIDevice *device=[UIDevice currentDevice];
-    device.proximityMonitoringEnabled=YES;
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(proximityChanged:) name:@"UIDeviceProximityStateDidChangeNotification" object:device];
+    [device setProximityMonitoringEnabled:YES];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(proximityChanged:) name:UIDeviceProximityStateDidChangeNotification object:device];
     imagePicker=[[UIImagePickerController alloc]init];
    // imagePicker=[[UIImagePickerController alloc]init];
     imagePicker.delegate=self;
@@ -40,10 +40,9 @@
 
 -(void)proximityChanged:(NSNotification *)notification{
     UIDevice *device=[notification object];
+    NSLog(@"Detected %d",device.proximityState);
     if(device.proximityState==1)
     {
-       
-        
         UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"Login" message:nil delegate:self cancelButtonTitle:@"cancel" otherButtonTitles:@"Login",nil];
         alert.alertViewStyle=UIAlertViewStyleSecureTextInput;
         [alert setTag:1];
@@ -53,7 +52,7 @@
     else
     {
         
-        
+        [[UIDevice currentDevice] setProximityMonitoringEnabled:NO];
 
     }
 }

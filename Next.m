@@ -16,7 +16,7 @@
 @end
 
 @implementation Next
-@synthesize webUploader;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -48,21 +48,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-
-- (IBAction)server:(id)sender {
-  /*  NSArray *dirPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    docsDir = [dirPath objectAtIndex:0];
-    webUploader = [[GCDWebUploader alloc] initWithUploadDirectory:docsDir];
-    webUploader.delegate = self;
-    
-    if(![webUploader start])
-    {
-        [webUploader startWithPort:2121 bonjourName:@" "];
-    }
-    NSLog(@"Visit %@ in your web browser", webUploader.serverURL);
-   */
-    
-}
 - (UIImage*)loadImage:(NSInteger)counter
 {
     NSString* path = [docsDir stringByAppendingPathComponent:[collImages objectAtIndex:counter]];
@@ -78,15 +63,19 @@
 {
     NSLog(@"File Downloaded");
 }
--(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return [collImages count];
 }
--(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UICollectionViewCell *collCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
+    UITableViewCell *collCell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    if(!collCell)
+        collCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
     UIImageView *imageA = (UIImageView *)[collCell viewWithTag:10];
     [imageA setImage:[self loadImage:indexPath.row]];
+    UILabel *label2 = (UILabel *)[collCell viewWithTag:11];
+    label2.text = [collImages objectAtIndex:indexPath.row];
     return collCell;
 }
 - (IBAction)import:(id)sender {
@@ -113,7 +102,10 @@
     [imageCollectionView performSelector:@selector(reloadData)];
      [self dismissViewControllerAnimated:YES completion:NULL];
 }
-
+-(void)viewWillAppear:(BOOL)animated
+{
+    [imageCollectionView performSelector:@selector(reloadData)];
+}
 -(void)elcImagePickerControllerDidCancel:(ELCImagePickerController *)picker
 {
     [picker dismissViewControllerAnimated:YES completion:NULL];
