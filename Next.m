@@ -42,10 +42,12 @@
     [otherImages description];
     collImages = [[NSMutableArray alloc] initWithArray:[otherImages filteredArrayUsingPredicate:predicate]];
     self.navigationController.navigationBar.hidden = YES;
+    //imageCollectionView.editing = YES;
 }
 -(void)viewWillAppear:(BOOL)animated
 {
     self.navigationController.navigationBar.hidden = YES;
+    self.tabBarController.tabBar.hidden = NO;
     [imageCollectionView performSelector:@selector(reloadData)];
 }
 - (void)didReceiveMemoryWarning
@@ -78,14 +80,29 @@
     UIImageView *imageA = (UIImageView *)[collCell viewWithTag:10];
     [imageA setImage:[self loadImage:indexPath.row]];
     UILabel *label2 = (UILabel *)[collCell viewWithTag:11];
-    label2.text = [collImages objectAtIndex:indexPath.row];
+    NSString *pathWithoutExt = [collImages objectAtIndex:indexPath.row];
+    label2.text = [pathWithoutExt stringByDeletingPathExtension];
     return collCell;
+}
+-(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
+}
+-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  if(editingStyle==UITableViewCellEditingStyleDelete)
+  {
+      path = [docsDir stringByAppendingPathComponent:[collImages objectAtIndex:indexPath.row]];
+      [[NSFileManager defaultManager] removeItemAtPath:path error:nil];
+      [collImages removeObjectAtIndex:indexPath.row];
+      [imageCollectionView performSelector:@selector(reloadData)];
+  }
 }
 - (IBAction)import:(id)sender {
     
     ELCImagePickerController *elcPicker = [[ELCImagePickerController alloc] initImagePicker];
     elcPicker.maximumImagesCount = 10;
-    elcPicker.returnsOriginalImage = NO; //Only return the fullScreenImage, not the fullResolutionImage
+    elcPicker.returnsOriginalImage = YES; //Only return the fullScreenImage, not the fullResolutionImage
 	elcPicker.imagePickerDelegate = self;
     [self presentViewController:elcPicker animated:YES completion:nil];
 }
@@ -95,11 +112,11 @@
    for(NSDictionary *myInfo in info)
    {
        image = [myInfo objectForKey:UIImagePickerControllerOriginalImage];
-       NSString *myPath = [docsDir stringByAppendingFormat:@"/%ld.png",(long)imgNo];
+       NSString *myPath = [docsDir stringByAppendingFormat:@"/Photo %ld.png",(long)imgNo];
        NSData *data = UIImagePNGRepresentation(image);
        [data writeToFile:myPath atomically:NO];
         myPath = [myPath lastPathComponent];
-       myPath = [myPath stringByDeletingPathExtension];
+    
        [collImages addObject:myPath];
        imgNo++;
    }

@@ -26,7 +26,7 @@
 -(IBAction)toggleBars:(id)sender
 {
     [self.navigationController setNavigationBarHidden:!self.navigationController.navigationBarHidden animated:YES];
-    
+    [[UIApplication sharedApplication] setStatusBarHidden:NO];
     
 }
 - (void)viewDidLoad
@@ -36,6 +36,10 @@
     UIImage* myImage = [UIImage imageWithContentsOfFile:self.selectedImageFromAnother];
     [self.imageView setImage:myImage];
     self.tabBarController.tabBar.hidden = YES;
+    [[UIApplication sharedApplication] setStatusBarHidden:YES];
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(toggleBars:)];
+    tapGesture.numberOfTapsRequired = 1;
+    [self.view addGestureRecognizer:tapGesture];
     // Do any additional setup after loading the view.
 }
 -(void)viewWillAppear:(BOOL)animated
@@ -51,7 +55,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 /*
 #pragma mark - Navigation
 
