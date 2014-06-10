@@ -30,17 +30,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.imageView setImage:self.selectedImageFromAnother];
+
+    UIImage* myImage = [UIImage imageWithContentsOfFile:self.selectedImageFromAnother];
+    [self.imageView setImage:myImage];
     
     // Do any additional setup after loading the view.
 }
--(IBAction)backBarButtonItem:(id)sender
-{
-    [self dismissViewControllerAnimated:YES completion:NULL];
-}
 -(void)viewWillAppear:(BOOL)animated
 {
-    [self.imageView setImage:self.selectedImageFromAnother];
+    //[self.imageView setImage:self.selectedImageFromAnother];
 }
 -(void)selectImage:(UIImage *)selectedImage
 {

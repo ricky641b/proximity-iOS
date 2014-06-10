@@ -194,7 +194,7 @@
                     <navigationItem key="navigationItem" id="L1p-do-Hiv"/>
                     <connections>
                         <outlet property="imageCollectionView" destination="j7O-85-VXi" id="m6o-hm-Hrt"/>
-                        <segue destination="Rnj-Eq-7Rx" kind="push" id="yPL-ke-qz8"/>
+                        <segue destination="Rnj-Eq-7Rx" kind="push" identifier="imageViewer" id="fou-gO-UmT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pon-Y0-t3t" userLabel="First Responder" sceneMemberID="firstResponder"/>

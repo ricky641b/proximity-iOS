@@ -13,6 +13,7 @@
     NSMutableArray *collImages;
     NSString *docsDir;
     UIImage *selectedImage;
+    NSString *path;
 }
 @end
 
@@ -40,7 +41,7 @@
     NSArray *otherImages = [[NSMutableArray alloc] initWithArray:[[NSFileManager defaultManager] contentsOfDirectoryAtPath:docsDir error:nil]];
     [otherImages description];
     collImages = [[NSMutableArray alloc] initWithArray:[otherImages filteredArrayUsingPredicate:predicate]];
-   
+    self.navigationController.navigationBar.hidden = YES;
 }
 
 - (void)didReceiveMemoryWarning
@@ -51,7 +52,7 @@
 
 - (UIImage*)loadImage:(NSInteger)counter
 {
-    NSString* path = [docsDir stringByAppendingPathComponent:[collImages objectAtIndex:counter]];
+    path = [docsDir stringByAppendingPathComponent:[collImages objectAtIndex:counter]];
     UIImage* myImage = [UIImage imageWithContentsOfFile:path];
     return myImage;
 }
@@ -110,8 +111,7 @@
 }
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-  
-        [segue.destinationViewController setSelectedImageFromAnother:selectedImage];
+    [segue.destinationViewController setSelectedImageFromAnother:path];
 }
 -(void)viewWillAppear:(BOOL)animated
 {
