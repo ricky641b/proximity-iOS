@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6154.17" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="GcE-aH-qDg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="GcE-aH-qDg">
     <dependencies>
-        <deployment defaultVersion="1808" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6153.11"/>
+        <deployment defaultVersion="1792" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -147,19 +147,19 @@
                                 <rect key="frame" x="0.0" y="66" width="320" height="454"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" ambiguous="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="64" id="XZS-Ke-EIB">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="64" id="XZS-Ke-EIB">
+                                        <rect key="frame" x="0.0" y="22" width="320" height="64"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XZS-Ke-EIB" id="Vyd-4C-xB6">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="63"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" tag="10" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TEQ-S5-Prr">
-                                                    <rect key="frame" x="11" y="3" width="58" height="56"/>
+                                                    <rect key="frame" x="11" y="0.0" width="58" height="56"/>
                                                 </imageView>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="11" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gs6-Y6-Y0b">
-                                                    <rect key="frame" x="92" y="21" width="176" height="21"/>
+                                                    <rect key="frame" x="92" y="0.0" width="176" height="21"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
-                                                    <color key="textColor" red="0.13725490870000001" green="0.76862752440000004" blue="0.078431375319999996" alpha="1" colorSpace="deviceRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -177,11 +177,36 @@
                     <tabBarItem key="tabBarItem" title="File Browser" id="cUB-1h-GiH"/>
                     <connections>
                         <outlet property="imageCollectionView" destination="j7O-85-VXi" id="m6o-hm-Hrt"/>
+                        <segue destination="Rnj-Eq-7Rx" kind="push" id="Usq-70-qVk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pon-Y0-t3t" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="463" y="545"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="qUt-WT-UFQ">
+            <objects>
+                <viewController id="Rnj-Eq-7Rx" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="00i-gK-4Po"/>
+                        <viewControllerLayoutGuide type="bottom" id="CHT-O1-iqq"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="tgR-ow-v1N">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wdc-J7-Lg4">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="POJ-eF-cb2"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Sc5-ue-fjj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="863" y="543"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Zc1-Ev-Epj">
@@ -225,10 +250,10 @@
         <image name="Facebook_f_logo_2013.png" width="417" height="417"/>
         <image name="imgres.jpg" width="204" height="204"/>
     </resources>
+    <color key="tintColor" name="selectedTextBackgroundColor" catalog="System" colorSpace="catalog"/>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
-    <color key="tintColor" name="selectedTextBackgroundColor" catalog="System" colorSpace="catalog"/>
 </document>
