@@ -26,6 +26,7 @@
 		2490B76A193F9A5000322803 /* Facebook_f_logo_2013.png in Resources */ = {isa = PBXBuildFile; fileRef = 2490B768193F9A5000322803 /* Facebook_f_logo_2013.png */; };
 		2490B76C193F9B0000322803 /* Instagram_Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 2490B76B193F9B0000322803 /* Instagram_Logo.png */; };
 		24E9EEDE1940662500A8F8C6 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24E9EEDD1940662500A8F8C6 /* Social.framework */; };
+		541DC82C1946D7F500242374 /* ImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 541DC82B1946D7F500242374 /* ImageViewController.m */; };
 		544FF857193F5C2500D5781E /* ELCAlbumPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 544FF842193F5C2500D5781E /* ELCAlbumPickerController.m */; };
 		544FF858193F5C2500D5781E /* ELCAsset.m in Sources */ = {isa = PBXBuildFile; fileRef = 544FF844193F5C2500D5781E /* ELCAsset.m */; };
 		544FF859193F5C2500D5781E /* ELCAssetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 544FF846193F5C2500D5781E /* ELCAssetCell.m */; };
@@ -95,6 +96,8 @@
 		2490B768193F9A5000322803 /* Facebook_f_logo_2013.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Facebook_f_logo_2013.png; sourceTree = "<group>"; };
 		2490B76B193F9B0000322803 /* Instagram_Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Instagram_Logo.png; sourceTree = "<group>"; };
 		24E9EEDD1940662500A8F8C6 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		541DC82A1946D7F500242374 /* ImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageViewController.h; sourceTree = "<group>"; };
+		541DC82B1946D7F500242374 /* ImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageViewController.m; sourceTree = "<group>"; };
 		544FF841193F5C2500D5781E /* ELCAlbumPickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELCAlbumPickerController.h; sourceTree = "<group>"; };
 		544FF842193F5C2500D5781E /* ELCAlbumPickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELCAlbumPickerController.m; sourceTree = "<group>"; };
 		544FF843193F5C2500D5781E /* ELCAsset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELCAsset.h; sourceTree = "<group>"; };
@@ -230,6 +233,8 @@
 				244480D4193C384600D50AAF /* Next.m */,
 				54C829AE19410BEF007BCD8D /* ServerViewController.h */,
 				54C829AF19410BEF007BCD8D /* ServerViewController.m */,
+				541DC82A1946D7F500242374 /* ImageViewController.h */,
+				541DC82B1946D7F500242374 /* ImageViewController.m */,
 				246F8276193C0070004BC311 /* Images.xcassets */,
 				2490B76B193F9B0000322803 /* Instagram_Logo.png */,
 				2490B767193F9A5000322803 /* imgres.jpg */,
@@ -486,6 +491,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				541DC82C1946D7F500242374 /* ImageViewController.m in Sources */,
 				544FF88D193F5C9A00D5781E /* GCDWebServerFileRequest.m in Sources */,
 				544FF88F193F5C9A00D5781E /* GCDWebServerURLEncodedFormRequest.m in Sources */,
 				544FF859193F5C2500D5781E /* ELCAssetCell.m in Sources */,
@@ -584,7 +590,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -617,7 +623,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -632,9 +638,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "proximity/proximity-Prefix.pch";
 				INFOPLIST_FILE = "proximity/proximity-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "B93015F3-9D7E-436A-8702-0E7D288E2056";
+				PROVISIONING_PROFILE = "C46DB6F1-3E1D-4E48-8F6B-9F82158F56D7";
 				SDKROOT = iphoneos7.1;
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
@@ -650,9 +656,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "proximity/proximity-Prefix.pch";
 				INFOPLIST_FILE = "proximity/proximity-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "B93015F3-9D7E-436A-8702-0E7D288E2056";
+				PROVISIONING_PROFILE = "C46DB6F1-3E1D-4E48-8F6B-9F82158F56D7";
 				SDKROOT = iphoneos7.1;
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
@@ -675,6 +681,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "proximityTests/proximityTests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -693,6 +700,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "proximity/proximity-Prefix.pch";
 				INFOPLIST_FILE = "proximityTests/proximityTests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;

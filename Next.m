@@ -7,11 +7,12 @@
 //
 
 #import "Next.h"
-
+#import "ImageViewController.h"
 @interface Next ()
 {
     NSMutableArray *collImages;
     NSString *docsDir;
+    UIImage *selectedImage;
 }
 @end
 
@@ -101,6 +102,16 @@
    }
     [imageCollectionView performSelector:@selector(reloadData)];
      [self dismissViewControllerAnimated:YES completion:NULL];
+}
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    selectedImage = [self loadImage:indexPath.row];
+    [self performSegueWithIdentifier:@"imageViewer" sender:nil];
+}
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+  
+        [segue.destinationViewController setSelectedImageFromAnother:selectedImage];
 }
 -(void)viewWillAppear:(BOOL)animated
 {
