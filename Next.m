@@ -43,7 +43,11 @@
     collImages = [[NSMutableArray alloc] initWithArray:[otherImages filteredArrayUsingPredicate:predicate]];
     self.navigationController.navigationBar.hidden = YES;
 }
-
+-(void)viewWillAppear:(BOOL)animated
+{
+    self.navigationController.navigationBar.hidden = YES;
+    [imageCollectionView performSelector:@selector(reloadData)];
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -61,10 +65,7 @@
 {
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
--(void)webUploader:(GCDWebUploader *)uploader didUploadFileAtPath:(NSString *)path
-{
-    NSLog(@"File Downloaded");
-}
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return [collImages count];
@@ -98,6 +99,7 @@
        NSData *data = UIImagePNGRepresentation(image);
        [data writeToFile:myPath atomically:NO];
         myPath = [myPath lastPathComponent];
+       myPath = [myPath stringByDeletingPathExtension];
        [collImages addObject:myPath];
        imgNo++;
    }
@@ -113,10 +115,7 @@
 {
     [segue.destinationViewController setSelectedImageFromAnother:path];
 }
--(void)viewWillAppear:(BOOL)animated
-{
-    [imageCollectionView performSelector:@selector(reloadData)];
-}
+
 -(void)elcImagePickerControllerDidCancel:(ELCImagePickerController *)picker
 {
     [picker dismissViewControllerAnimated:YES completion:NULL];

@@ -10,7 +10,7 @@
 
 @interface ImageViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
-@property (strong,nonatomic) IBOutlet UINavigationBar *navBar;
+//@property (strong,nonatomic) IBOutlet UINavigationBar *navBar;
 @end
 
 @implementation ImageViewController
@@ -26,6 +26,8 @@
 -(IBAction)toggleBars:(id)sender
 {
     [self.navigationController setNavigationBarHidden:!self.navigationController.navigationBarHidden animated:YES];
+    
+    
 }
 - (void)viewDidLoad
 {
@@ -33,7 +35,7 @@
 
     UIImage* myImage = [UIImage imageWithContentsOfFile:self.selectedImageFromAnother];
     [self.imageView setImage:myImage];
-    
+    self.tabBarController.tabBar.hidden = YES;
     // Do any additional setup after loading the view.
 }
 -(void)viewWillAppear:(BOOL)animated
