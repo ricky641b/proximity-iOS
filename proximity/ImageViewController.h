@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ImageViewController : UIViewController
+@interface ImageViewController : UIViewController <UIDocumentInteractionControllerDelegate,UIScrollViewDelegate>
 @property(nonatomic,strong) NSString *selectedImageFromAnother;
-
+@property(strong,nonatomic) UIDocumentInteractionController *documentInteraction;
+@property(nonatomic,strong) NSURL *urlFromAnotherView;
 @end

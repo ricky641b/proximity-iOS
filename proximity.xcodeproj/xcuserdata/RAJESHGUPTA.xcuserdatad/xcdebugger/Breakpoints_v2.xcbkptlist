@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "proximity/ViewController.m"
-            timestampString = "423745108.135218"
+            timestampString = "424254040.518642"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
             landmarkName = "-proximityChanged:"
             landmarkType = "5">
          </BreakpointContent>

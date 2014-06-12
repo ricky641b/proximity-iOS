@@ -15,6 +15,7 @@
     UIImage *selectedImage;
     NSString *path;
 }
+@property(nonatomic,strong) NSURL *urlMy;
 @end
 
 @implementation Next
@@ -37,10 +38,12 @@
     imageCollectionView.backgroundColor = [UIColor clearColor];
     NSArray *dirPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     docsDir = [dirPath objectAtIndex:0];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF ENDSWITH '.png'"];
-    NSArray *otherImages = [[NSMutableArray alloc] initWithArray:[[NSFileManager defaultManager] contentsOfDirectoryAtPath:docsDir error:nil]];
-    [otherImages description];
-    collImages = [[NSMutableArray alloc] initWithArray:[otherImages filteredArrayUsingPredicate:predicate]];
+    //NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF ENDSWITH '.png' OR '.jpg'"];
+     NSArray *extensions = [NSArray arrayWithObjects:@"png", @"jpg", @"jpeg", @"pdf",nil];
+    NSArray *otherImages = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:docsDir error:nil];
+    collImages = [[NSMutableArray alloc] initWithArray:[otherImages filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"pathExtension IN %@", extensions]]];
+   
+
     self.navigationController.navigationBar.hidden = YES;
     //imageCollectionView.editing = YES;
 }
@@ -92,10 +95,12 @@
 {
   if(editingStyle==UITableViewCellEditingStyleDelete)
   {
+      
       path = [docsDir stringByAppendingPathComponent:[collImages objectAtIndex:indexPath.row]];
       [[NSFileManager defaultManager] removeItemAtPath:path error:nil];
       [collImages removeObjectAtIndex:indexPath.row];
-      [imageCollectionView performSelector:@selector(reloadData)];
+      //[imageCollectionView performSelector:@selector(reloadData)];
+      [imageCollectionView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
   }
 }
 - (IBAction)import:(id)sender {
@@ -111,6 +116,7 @@
     NSInteger imgNo = [collImages count] + 0;
    for(NSDictionary *myInfo in info)
    {
+       
        image = [myInfo objectForKey:UIImagePickerControllerOriginalImage];
        NSString *myPath = [docsDir stringByAppendingFormat:@"/Photo %ld.png",(long)imgNo];
        NSData *data = UIImagePNGRepresentation(image);
@@ -126,11 +132,13 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     selectedImage = [self loadImage:indexPath.row];
+    _urlMy = [[NSURL alloc] initFileURLWithPath:path];
     [self performSegueWithIdentifier:@"imageViewer" sender:nil];
 }
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     [segue.destinationViewController setSelectedImageFromAnother:path];
+    [segue.destinationViewController setUrlFromAnotherView:_urlMy];
 }
 
 -(void)elcImagePickerControllerDidCancel:(ELCImagePickerController *)picker

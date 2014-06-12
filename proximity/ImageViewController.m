@@ -9,8 +9,14 @@
 #import "ImageViewController.h"
 
 @interface ImageViewController ()
-@property (weak, nonatomic) IBOutlet UIImageView *imageView;
-//@property (strong,nonatomic) IBOutlet UINavigationBar *navBar;
+{
+    IBOutlet UIBarButtonItem *barButtonItem;
+}
+@property (strong, nonatomic) IBOutlet UIImageView *imageView;
+@property(strong,nonatomic) IBOutlet UIScrollView *scrollView;
+@property (strong,nonatomic) IBOutlet UINavigationBar *navBar;
+
+
 @end
 
 @implementation ImageViewController
@@ -20,15 +26,46 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        
     }
     return self;
 }
--(IBAction)toggleBars:(id)sender
+-(void)toggleBars:(id)sender
 {
-    [self.navigationController setNavigationBarHidden:!self.navigationController.navigationBarHidden animated:YES];
-    [[UIApplication sharedApplication] setStatusBarHidden:NO];
+    self.navBar.hidden = !self.navBar.isHidden;
+//self.toolBar.hidden = !self.toolBar.isHidden;
+    //[self.navigationController setNavigationBarHidden:!self.navigationController.navigationBarHidden animated:YES];
+  //  [[UIApplication sharedApplication] setStatusBarHidden:NO];
     
 }
+-(UIDocumentInteractionController *)documentInteraction
+{
+    if(!_documentInteraction)
+    {
+        _documentInteraction = [[UIDocumentInteractionController alloc] init];
+        _documentInteraction.delegate = self;
+    }
+    return _documentInteraction;
+    
+}
+-(IBAction)backButtonPressed
+{
+    [self dismissViewControllerAnimated:YES completion:NULL];
+}
+#pragma Camera
+- (IBAction)buttonPressed:(id)sender {
+    
+   
+    NSURL *documentURL = _urlFromAnotherView;
+    self.documentInteraction.URL = documentURL;
+    [self.documentInteraction presentOpenInMenuFromBarButtonItem:barButtonItem animated:YES];
+}
+- (UIViewController *)documentInteractionControllerViewControllerForPreview:(UIDocumentInteractionController *)controller {
+    
+    return  self;
+}
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -36,14 +73,25 @@
     UIImage* myImage = [UIImage imageWithContentsOfFile:self.selectedImageFromAnother];
     [self.imageView setImage:myImage];
     self.tabBarController.tabBar.hidden = YES;
-    [[UIApplication sharedApplication] setStatusBarHidden:YES];
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(toggleBars:)];
     tapGesture.numberOfTapsRequired = 1;
     [self.view addGestureRecognizer:tapGesture];
+    self.scrollView.minimumZoomScale=1.0;
+    self.scrollView.maximumZoomScale=6.0;
+    self.scrollView.contentSize=CGSizeMake(1280, 960);
+    self.scrollView.delegate=self;
     // Do any additional setup after loading the view.
+}
+- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
+{
+    return self.imageView;
 }
 -(void)viewWillAppear:(BOOL)animated
 {
+    //self.toolBar.hidden = NO;
+    self.navBar.hidden = YES;
+    
     //[self.imageView setImage:self.selectedImageFromAnother];
 }
 -(void)selectImage:(UIImage *)selectedImage
