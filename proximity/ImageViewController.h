@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ImageViewController : UIViewController <UIDocumentInteractionControllerDelegate,UIScrollViewDelegate>
+@interface ImageViewController : UIViewController <UIDocumentInteractionControllerDelegate,UIScrollViewDelegate,UIGestureRecognizerDelegate>
 @property(nonatomic,strong) NSString *selectedImageFromAnother;
 @property(strong,nonatomic) UIDocumentInteractionController *documentInteraction;
 @property(nonatomic,strong) NSURL *urlFromAnotherView;

@@ -11,7 +11,6 @@
 @interface ViewController ()
 {
     UIAlertView *alert,*myAlert,*errorAlert;
-  //  NSUserDefaults *initialPasswordUD,*passwordSavedUD;
     NSString *passwordEntered;
 }
 @property(nonatomic,strong)NSUserDefaults *initialPasswordUD;
@@ -76,6 +75,14 @@
         _initialPasswordUD = [[NSUserDefaults alloc] init];
     return _initialPasswordUD;
 }
+-(IBAction)myButton:(id)sender
+{
+    alert=[[UIAlertView alloc]initWithTitle:@"Login" message:nil delegate:self cancelButtonTitle:@"cancel" otherButtonTitles:@"Login",nil];
+    alert.alertViewStyle=UIAlertViewStyleSecureTextInput;
+    [alert setTag:1];
+    
+    [alert show];
+}
 -(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
    
@@ -104,7 +111,7 @@
         if (!(range.location != NSNotFound) && [password.text length]!=0) {
             passwordEntered = password.text;
             [self.passwordSavedUD setObject:passwordEntered forKey:@"UserPassword"];
-            [self.initialPasswordUD setObject:@"YES" forKey:@"firstTimeBoot"];
+            [self.initialPasswordUD setObject:@"YES" forKey:@"notFirstTimeBoot"];
             UIAlertView *acceptedAlert = [[UIAlertView alloc] initWithTitle:@"Password Accepted" message:@"Congratulations" delegate:self cancelButtonTitle:@"Done" otherButtonTitles:nil];
             [acceptedAlert show];
             [self proximityEnabler];
@@ -127,6 +134,7 @@
 {
     UIDevice *device=[UIDevice currentDevice];
     [device setProximityMonitoringEnabled:YES];
+    //NSLog(@"%hhd",device.proximityMonitoringEnabled);
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(proximityChanged:) name:UIDeviceProximityStateDidChangeNotification object:device];
 }
 
@@ -164,7 +172,7 @@
 {
   
    
-    if(![self.initialPasswordUD boolForKey:@"firstTimeBoot"])
+    if(![self.initialPasswordUD boolForKey:@"notFirstTimeBoot"])
     {
         [self PasswordAuthority];
     }

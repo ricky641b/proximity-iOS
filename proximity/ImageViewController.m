@@ -11,6 +11,7 @@
 @interface ImageViewController ()
 {
     IBOutlet UIBarButtonItem *barButtonItem;
+    UIScrollView *scrollView2;
 }
 @property (strong, nonatomic) IBOutlet UIImageView *imageView;
 @property(strong,nonatomic) IBOutlet UIScrollView *scrollView;
@@ -30,7 +31,7 @@
     }
     return self;
 }
--(void)toggleBars:(id)sender
+-(IBAction)toggleBars:(UITapGestureRecognizer *)gestureRecognizer
 {
     self.navBar.hidden = !self.navBar.isHidden;
 //self.toolBar.hidden = !self.toolBar.isHidden;
@@ -69,19 +70,50 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+  
     UIImage* myImage = [UIImage imageWithContentsOfFile:self.selectedImageFromAnother];
     [self.imageView setImage:myImage];
+    //[self.imageView setContentMode:UIViewContentModeScaleAspectFit];
+    [self.imageView sizeToFit];
     self.tabBarController.tabBar.hidden = YES;
     [self.navigationController setNavigationBarHidden:YES animated:NO];
-    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(toggleBars:)];
-    tapGesture.numberOfTapsRequired = 1;
-    [self.view addGestureRecognizer:tapGesture];
     self.scrollView.minimumZoomScale=1.0;
     self.scrollView.maximumZoomScale=6.0;
     self.scrollView.contentSize=CGSizeMake(1280, 960);
     self.scrollView.delegate=self;
-    // Do any additional setup after loading the view.
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(toggleBars:)];
+    [tapGesture setDelegate:self];
+    tapGesture.numberOfTapsRequired = 1;
+    tapGesture.cancelsTouchesInView = NO;
+    [_scrollView addGestureRecognizer:tapGesture];
+  
+}
+-(void) setupScrollView {
+    //add the scrollview to the view
+   scrollView2 = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0,
+                                                                     self.view.frame.size.width,
+                                                                     self.view.frame.size.height)];
+    scrollView2.pagingEnabled = YES;
+    [scrollView2 setAlwaysBounceVertical:NO];
+    //setup internal views
+    NSInteger numberOfViews = 3;
+    for (int i = 0; i < numberOfViews; i++) {
+        CGFloat xOrigin = i * self.view.frame.size.width;
+        UIImageView *image = [[UIImageView alloc] initWithFrame:
+                              CGRectMake(xOrigin, 0,
+                                         self.view.frame.size.width,
+                                         self.view.frame.size.height)];
+        image.image = [UIImage imageNamed:[NSString stringWithFormat:
+                                           @"Photo %d", i+1]];
+        image.contentMode = UIViewContentModeScaleAspectFit;
+        [scrollView2 addSubview:image];
+    }
+    //set the scroll view content size
+    scrollView2.contentSize = CGSizeMake(self.view.frame.size.width *
+                                             numberOfViews,
+                                             self.view.frame.size.height);
+    //add the scrollview to this view
+    [self.view addSubview:scrollView2];
 }
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
 {
@@ -94,10 +126,7 @@
     
     //[self.imageView setImage:self.selectedImageFromAnother];
 }
--(void)selectImage:(UIImage *)selectedImage
-{
-    [self.imageView setImage:selectedImage];
-}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
