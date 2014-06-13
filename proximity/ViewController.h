@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <Social/Social.h>
-@interface ViewController : UIViewController<UIAlertViewDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate>
+@interface ViewController : UIViewController<UIAlertViewDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate,UIDocumentInteractionControllerDelegate>
 {
     UIImagePickerController *imagePicker;
     UIImage *image;
@@ -20,5 +20,4 @@
 - (IBAction)twitter:(id)sender;
 @property(strong,nonatomic)SLComposeViewController *slComposeView;
 @property(strong,nonatomic) NSData *imageToShare;
-
 @end

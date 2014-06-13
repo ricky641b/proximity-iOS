@@ -56,6 +56,7 @@ static int fileCounter = 0;
 -(IBAction)stopServer:(id)sender
 {
     [webUploader stop];
+    [sender setTitle:@"Start Server" forState:UIControlStateNormal];
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
 - (void)didReceiveMemoryWarning

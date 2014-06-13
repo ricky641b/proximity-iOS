@@ -9,24 +9,33 @@
 #import "ViewController.h"
 
 @interface ViewController ()
-
+{
+    UIAlertView *alert,*myAlert,*errorAlert;
+    NSString *passwordEntered;
+}
+@property(nonatomic,strong)NSUserDefaults *initialPasswordUD;
+@property(nonatomic,strong)NSUserDefaults *passwordSavedUD;
 @end
 
 @implementation ViewController
 @synthesize imageToShare;
 
+-(void)PasswordAuthority
+{
+    myAlert = [[UIAlertView alloc] initWithTitle:@"Set Your Password" message:@"Enter Password" delegate:self cancelButtonTitle:@"Done" otherButtonTitles:nil];
+    myAlert.alertViewStyle = UIAlertViewStyleSecureTextInput;
+    [myAlert show];
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    UIDevice *device=[UIDevice currentDevice];
-    [device setProximityMonitoringEnabled:YES];
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(proximityChanged:) name:UIDeviceProximityStateDidChangeNotification object:device];
-    imagePicker=[[UIImagePickerController alloc]init];
+
+       // imagePicker=[[UIImagePickerController alloc]init];
    // imagePicker=[[UIImagePickerController alloc]init];
     imagePicker.delegate=self;
     imagePicker.sourceType=UIImagePickerControllerSourceTypeCamera;
     // [imagePicker setSourceType:UIImagePickerControllerSourceTypeCamera];
-    [self presentViewController:imagePicker animated:YES completion:NULL];
+   // [self presentViewController:imagePicker animated:YES completion:NULL];
    
 
 	// Do any additional setup after loading the view, typically from a nib.
@@ -43,38 +52,91 @@
     NSLog(@"Detected %d",device.proximityState);
     if(device.proximityState==1)
     {
-        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"Login" message:nil delegate:self cancelButtonTitle:@"cancel" otherButtonTitles:@"Login",nil];
+        if(!alert.isVisible)
+        {
+        alert=[[UIAlertView alloc]initWithTitle:@"Login" message:nil delegate:self cancelButtonTitle:@"cancel" otherButtonTitles:@"Login",nil];
         alert.alertViewStyle=UIAlertViewStyleSecureTextInput;
         [alert setTag:1];
+        
         [alert show];
+        }
         // [UIApplication sharedApplication].idleTimerDisabled = YES;
     }
-    else
-    {
-        
-        [[UIDevice currentDevice] setProximityMonitoringEnabled:NO];
-
-    }
+}
+-(NSUserDefaults *)passwordSavedUD
+{
+    if(!_passwordSavedUD)
+        _passwordSavedUD = [[NSUserDefaults alloc] init];
+    return _passwordSavedUD;
+}
+-(NSUserDefaults *)initialPasswordUD
+{
+    if(!_initialPasswordUD)
+        _initialPasswordUD = [[NSUserDefaults alloc] init];
+    return _initialPasswordUD;
+}
+-(IBAction)myButton:(id)sender
+{
+    alert=[[UIAlertView alloc]initWithTitle:@"Login" message:nil delegate:self cancelButtonTitle:@"cancel" otherButtonTitles:@"Login",nil];
+    alert.alertViewStyle=UIAlertViewStyleSecureTextInput;
+    [alert setTag:1];
+    
+    [alert show];
 }
 -(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
+   
     if(buttonIndex==1)
     {
+        NSString *check=[self.passwordSavedUD objectForKey:@"UserPassword"];
         UITextField *password=[alertView textFieldAtIndex:0];
-        if([password.text isEqualToString:@"nik"])
+         NSLog(@"%@",check);
+        if([password.text isEqualToString:check])
         {
             
             [self performSegueWithIdentifier:@"next" sender:self];
         }
         else{
+            alert=[[UIAlertView alloc]initWithTitle:@"ERROR" message:@"Incorrect Password" delegate:self cancelButtonTitle:@"Try Again" otherButtonTitles: nil];
+            [alert show];
+        }
+    }
+    if(alertView==myAlert)
+    {
+        UITextField *password = [alertView textFieldAtIndex:0];
+        NSString *rawString = [password text];
+        NSCharacterSet *whitespace = [NSCharacterSet whitespaceAndNewlineCharacterSet];
+        //NSString *trimmed = [rawString stringByTrimmingCharactersInSet:whitespace];
+        NSRange range = [rawString rangeOfCharacterFromSet:whitespace];
+        if (!(range.location != NSNotFound) && [password.text length]!=0) {
+            passwordEntered = password.text;
+            [self.passwordSavedUD setObject:passwordEntered forKey:@"UserPassword"];
+            [self.initialPasswordUD setObject:@"YES" forKey:@"notFirstTimeBoot"];
+            UIAlertView *acceptedAlert = [[UIAlertView alloc] initWithTitle:@"Password Accepted" message:@"Congratulations" delegate:self cancelButtonTitle:@"Done" otherButtonTitles:nil];
+            [acceptedAlert show];
+            [self proximityEnabler];
+          
+        }
+        else
+        {
+            errorAlert = [[UIAlertView alloc] initWithTitle:@"Password not accepted" message:@"Password contained spaces" delegate:self cancelButtonTitle:@"Retry" otherButtonTitles:nil];
+            [errorAlert show];
+            
             
         }
     }
+    if(alertView==errorAlert)
+    {
+        [self PasswordAuthority];
+    }
 }
-
-
-#pragma Camera
-
+-(void)proximityEnabler
+{
+    UIDevice *device=[UIDevice currentDevice];
+    [device setProximityMonitoringEnabled:YES];
+    //NSLog(@"%hhd",device.proximityMonitoringEnabled);
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(proximityChanged:) name:UIDeviceProximityStateDidChangeNotification object:device];
+}
 
 -(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
@@ -106,7 +168,21 @@
         NSLog(@"Error no account found");
     }
 }
+-(void)viewWillAppear:(BOOL)animated
+{
+  
+   
+    if(![self.initialPasswordUD boolForKey:@"notFirstTimeBoot"])
+    {
+        [self PasswordAuthority];
+    }
+    else
+    {
+        [self proximityEnabler];
+    }
 
+   
+}
 - (IBAction)twitter:(id)sender {
     if([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter])
     {

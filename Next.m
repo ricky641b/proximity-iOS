@@ -7,12 +7,15 @@
 //
 
 #import "Next.h"
-
+#import "ImageViewController.h"
 @interface Next ()
 {
     NSMutableArray *collImages;
     NSString *docsDir;
+    UIImage *selectedImage;
+    NSString *path;
 }
+@property(nonatomic,strong) NSURL *urlMy;
 @end
 
 @implementation Next
@@ -35,13 +38,21 @@
     imageCollectionView.backgroundColor = [UIColor clearColor];
     NSArray *dirPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     docsDir = [dirPath objectAtIndex:0];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF ENDSWITH '.png'"];
-    NSArray *otherImages = [[NSMutableArray alloc] initWithArray:[[NSFileManager defaultManager] contentsOfDirectoryAtPath:docsDir error:nil]];
-    [otherImages description];
-    collImages = [[NSMutableArray alloc] initWithArray:[otherImages filteredArrayUsingPredicate:predicate]];
+    //NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF ENDSWITH '.png' OR '.jpg'"];
+     NSArray *extensions = [NSArray arrayWithObjects:@"png", @"jpg", @"jpeg", @"pdf",nil];
+    NSArray *otherImages = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:docsDir error:nil];
+    collImages = [[NSMutableArray alloc] initWithArray:[otherImages filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"pathExtension IN %@", extensions]]];
    
-}
 
+    self.navigationController.navigationBar.hidden = YES;
+    //imageCollectionView.editing = YES;
+}
+-(void)viewWillAppear:(BOOL)animated
+{
+    self.navigationController.navigationBar.hidden = YES;
+    self.tabBarController.tabBar.hidden = NO;
+    [imageCollectionView performSelector:@selector(reloadData)];
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -50,7 +61,7 @@
 
 - (UIImage*)loadImage:(NSInteger)counter
 {
-    NSString* path = [docsDir stringByAppendingPathComponent:[collImages objectAtIndex:counter]];
+    path = [docsDir stringByAppendingPathComponent:[collImages objectAtIndex:counter]];
     UIImage* myImage = [UIImage imageWithContentsOfFile:path];
     return myImage;
 }
@@ -59,10 +70,7 @@
 {
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
--(void)webUploader:(GCDWebUploader *)uploader didUploadFileAtPath:(NSString *)path
-{
-    NSLog(@"File Downloaded");
-}
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return [collImages count];
@@ -75,14 +83,31 @@
     UIImageView *imageA = (UIImageView *)[collCell viewWithTag:10];
     [imageA setImage:[self loadImage:indexPath.row]];
     UILabel *label2 = (UILabel *)[collCell viewWithTag:11];
-    label2.text = [collImages objectAtIndex:indexPath.row];
+    NSString *pathWithoutExt = [collImages objectAtIndex:indexPath.row];
+    label2.text = [pathWithoutExt stringByDeletingPathExtension];
     return collCell;
+}
+-(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
+}
+-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  if(editingStyle==UITableViewCellEditingStyleDelete)
+  {
+      
+      path = [docsDir stringByAppendingPathComponent:[collImages objectAtIndex:indexPath.row]];
+      [[NSFileManager defaultManager] removeItemAtPath:path error:nil];
+      [collImages removeObjectAtIndex:indexPath.row];
+      //[imageCollectionView performSelector:@selector(reloadData)];
+      [imageCollectionView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+  }
 }
 - (IBAction)import:(id)sender {
     
     ELCImagePickerController *elcPicker = [[ELCImagePickerController alloc] initImagePicker];
     elcPicker.maximumImagesCount = 10;
-    elcPicker.returnsOriginalImage = NO; //Only return the fullScreenImage, not the fullResolutionImage
+    elcPicker.returnsOriginalImage = YES; //Only return the fullScreenImage, not the fullResolutionImage
 	elcPicker.imagePickerDelegate = self;
     [self presentViewController:elcPicker animated:YES completion:nil];
 }
@@ -91,21 +116,31 @@
     NSInteger imgNo = [collImages count] + 0;
    for(NSDictionary *myInfo in info)
    {
+       
        image = [myInfo objectForKey:UIImagePickerControllerOriginalImage];
-       NSString *myPath = [docsDir stringByAppendingFormat:@"/%ld.png",(long)imgNo];
+       NSString *myPath = [docsDir stringByAppendingFormat:@"/Photo %ld.png",(long)imgNo];
        NSData *data = UIImagePNGRepresentation(image);
        [data writeToFile:myPath atomically:NO];
         myPath = [myPath lastPathComponent];
+    
        [collImages addObject:myPath];
        imgNo++;
    }
     [imageCollectionView performSelector:@selector(reloadData)];
      [self dismissViewControllerAnimated:YES completion:NULL];
 }
--(void)viewWillAppear:(BOOL)animated
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [imageCollectionView performSelector:@selector(reloadData)];
+    selectedImage = [self loadImage:indexPath.row];
+    _urlMy = [[NSURL alloc] initFileURLWithPath:path];
+    [self performSegueWithIdentifier:@"imageViewer" sender:nil];
 }
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    [segue.destinationViewController setSelectedImageFromAnother:path];
+    [segue.destinationViewController setUrlFromAnotherView:_urlMy];
+}
+
 -(void)elcImagePickerControllerDidCancel:(ELCImagePickerController *)picker
 {
     [picker dismissViewControllerAnimated:YES completion:NULL];
